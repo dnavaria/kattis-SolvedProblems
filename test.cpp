@@ -57,7 +57,8 @@ int secondLargest(int *a, int n)
 
 void Rotate(int *a, int step, int n)
 {
-    //	for(int i=0;i<n;i++){ int x = (a[i] + step) % n;  if(x == 0){a[i] = n;}else{ a[i] = x;}}
+    // for(int i=0;i<n;i++){ int x = (a[i] + step) % n;
+    // if(x == 0){a[i] = n;}else{ a[i] = x;}}
     int *ax = new int[n];
     int z = 0;
     for(int i = step; i < n; i++)
@@ -296,7 +297,7 @@ string removeWhiteSpaces(string str)
     /*
 
     while(getline(ss,temp,' ')){
-    	str = str + temp;
+        str = str + temp;
     }
 
     */
@@ -327,12 +328,53 @@ void printMap(const map<string, int> &m)
     }
 }
 
+
+// Palindrome recursive solution - 1
+bool isPal(string str, int s, int e)
+{
+    if(s == e)
+    {
+        return true;
+    }
+    bool val;
+    if(str[s] == str[e])
+    {
+        val = isPal(str, s + 1, e - 1);
+    }
+    else
+    {
+        val = false;
+        return val;
+    }
+    return val;
+}
+// Palindrome recursive solution - 2
+bool isPal2(string str, int s, int e)
+{
+    if(s == e)
+        return true;
+
+    if(s > e)
+        return true;
+
+
+    if(str[s] != str[e])
+        return false;
+
+    return isPal2(str, s + 1, e - 1);
+}
+
+
 int main()
 {
     ios::sync_with_stdio(0);
     using my_type = int;
     cin.tie(0);
     cout.tie(0);
+
+
+    // string str = "aabaa";
+    // cout << isPal(str, 0, str.length() - 1);
 
     // int a[]={1,2,3,3,4};
     // int n = sizeof(a)/sizeof(int);
@@ -362,11 +404,9 @@ int main()
     // map<string, int> ::iterator iter = m.find("Jess");
     // if(iter != m.end())
     // {
-        // iter->second = iter->second + 5;
+    // iter->second = iter->second + 5;
     // }
     // printMap(m);
-
-    
 
 
 
