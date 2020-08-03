@@ -364,6 +364,44 @@ bool isPal2(string str, int s, int e)
     return isPal2(str, s + 1, e - 1);
 }
 
+bool detectCapitalUse(string word)
+{
+    if(word[0] >= 'A' && word[0] <= 'Z')
+    {
+        if(word[1] >= 'A' && word[1] <= 'Z')
+        {
+            for(int i = 2; i < word.length() ; i++)
+            {
+                if((word[i] >= 'A' && word[i] <= 'Z') == false)
+                {
+                    return false;
+                }
+            }
+        }
+        else if(word[1] >= 'a' && word[1] <= 'z')
+        {
+            for(int i = 2; i < word.length() ; i++)
+            {
+                if((word[i] >= 'a' && word[i] <= 'z') == false)
+                {
+                    return false;
+                }
+            }
+        }
+    }
+    else if(word[0] >= 'a' && word[0] <= 'z')
+    {
+        for(int i = 1; i < word.length() ; i++)
+        {
+            if((word[i] >= 'a' && word[i] <= 'z') == false)
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 
 int main()
 {
@@ -371,6 +409,16 @@ int main()
     using my_type = int;
     cin.tie(0);
     cout.tie(0);
+    int array[] =  {-2, -3, 4, -1, -2, 1, 5, -3};
+    int n = sizeof(array) / sizeof(array[0]);
+    int best = 0, sum = 0;
+    for (int k = 0; k < n; k++)
+    {
+        sum = max(array[k], sum + array[k]);
+        best = max(best, sum);
+        cout<<sum<<' '<<best<<'\n';
+    }
+    
 
 
     // string str = "aabaa";
